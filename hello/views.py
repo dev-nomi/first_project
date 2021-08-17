@@ -9,4 +9,6 @@ def noman(request):
   return HttpResponse("Hello, Noman!")
 
 def greet(request,name):
-  return HttpResponse(f"Hello, {name}")
+  return render(request,"hello/greet.html",{
+    "name": name.capitalize() 
+  })
