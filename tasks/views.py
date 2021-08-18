@@ -1,5 +1,4 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
 #later on we get tasks from db
 tasks = ['New Ruby task' , 'New Python task' , 'New Java task']
 
@@ -10,4 +9,10 @@ def index(request):
   })
 
 def new(request):
+  if request.method == "POST":
+    tasks.append(request.POST.get("task"))
+    return redirect('tasks:index')
   return render(request,'tasks/new.html')
+
+  
+
